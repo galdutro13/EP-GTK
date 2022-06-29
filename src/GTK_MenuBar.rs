@@ -18,6 +18,7 @@ pub fn build_menubar(application: &gtk::Application){
         .default_height(360)
         .build();
 
+    let v_box = gtk::Box::new(gtk::Orientation::Vertical, 10);
 
     let menu = Menu::new();
     let accel_group = AccelGroup::new();
@@ -50,9 +51,14 @@ pub fn build_menubar(application: &gtk::Application){
 
     let label = Label::new(Some("Exemplo"));
 
-
-
     let button = Button::with_label("Hey!");
+
+
+    v_box.pack_start(&menu_bar, false, false, 0);
+    v_box.pack_start(&label, true, true, 0);
+
+    window.add(&v_box);
+
 
     button.connect_clicked(|_| {
         eprintln!("Clicked!");
