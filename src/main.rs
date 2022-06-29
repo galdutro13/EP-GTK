@@ -1,3 +1,7 @@
+//mod GTK_MenuBar;
+
+mod GTK_MenuBar;
+
 extern crate gtk;
 
 use mysql::*;
@@ -5,8 +9,14 @@ use mysql::prelude::*;
 
 use gtk::prelude::*;
 
-use gtk::{Application, ApplicationWindow, Button, MenuBar, MenuButton};
+use gtk::{
+    Application, AccelFlags, AccelGroup, ApplicationWindow,
+    Button, MenuBar, MenuButton
+};
+
 use gtk::ffi::GtkApplication;
+use crate::GTK_MenuBar::build_menubar;
+
 fn main() {
 
     println!("Hello, world!");
@@ -29,26 +39,7 @@ fn main() {
     let sgbd_museu = Application::builder().application_id("SGBD Museu").build();
     let menu_museu =
     sgbd_museu.connect_activate(|app| {
-        let window = ApplicationWindow::builder()
-            .application(app)
-            .title("Sistema Unificado de Arquiologia")
-            .default_width(540)
-            .default_height(360)
-            .build();
-
-
-        let button = Button::with_label("Hey!");
-        button.connect_clicked(|_| {
-            eprintln!("Clicked!");
-        });
-
-
-        window.add(&button);
-        window.add(&menu_bar);
-        window.show_all();
-
-
-
+        build_menubar(app);
     });
 
     sgbd_museu.run();
