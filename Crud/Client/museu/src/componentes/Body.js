@@ -20,9 +20,15 @@ export default function Body(){
         <h1 className='register--title'>
           Museu Nustagem
         </h1>
-        <input type = "text" name = "name" placeholder = "Nome" className="register--input" onChange={handleChangeValues}/>
-        <input type = "text" name = "cost" placeholder = "Preço" className="register--input" onChange={handleChangeValues}/>
+        <h4>
+          Cadastro de objeto
+        </h4>
+        <input type = "text" name = "name" placeholder = "Objeto" className="register--input" onChange={handleChangeValues}/>
+        <input type = "text" name = "cost" placeholder = "Tipo" className="register--input" onChange={handleChangeValues}/>
         <input type = "text" name = "category" placeholder = "Categoria" className="register--input" onChange={handleChangeValues}/>
+        <input type = "text" name = "artist" placeholder = "Artista" className="register--input" onChange={handleChangeValues}/>
+        <input type = "text" name = "artist" placeholder = "Data de exposição" className="register--input" onChange={handleChangeValues}/>
+        <input type = "text" name = "artist" placeholder = "Coleção" className="register--input" onChange={handleChangeValues}/>
         <button className='register--button' onClick={() => handleClickButton()}> Cadastrar Objeto</button>
       </div>
       </div>
