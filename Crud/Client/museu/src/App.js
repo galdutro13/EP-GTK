@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import './App.css';
-
+import Header from "./componentes/Header";
+ 
 function App() {
   const [values, setValues] = useState();
   console.log(values);
@@ -28,6 +29,11 @@ function App() {
     </div>
     </div>
   );
+  return(
+    <>
+      <Header/>
+    </>
+  )
 }
-
+  
 export default App;
