@@ -1,12 +1,9 @@
-import React, {useState} from "react"
+import React, {useState, useEffect } from "react"
 import './App.css';
 import Header from "./componentes/Header";
 import Body from "./componentes/Body"; 
 import Footer from "./componentes/Footer";
-import Objetos from "./componentes/Objetos";
-import Gastos from "./componentes/Gastos";
-import Quantidade from "./componentes/Quantidade";
-
+import Card from "./componentes/Card";
 
 function App() {
 
@@ -14,7 +11,7 @@ function App() {
     <>
       <Header/>
       <Body />
-
+      <Card/>
       <Footer />
     </>
   )
