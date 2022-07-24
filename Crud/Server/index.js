@@ -1,31 +1,26 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
+const mysql = require("mysql2");
+//Iniciando servidor
 
 const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "password",
-    database: "crudMuseu",
-});
+    database: "crudgames",
+})
 
 
-app.get("/", (req, res) =>{
-    console.log("teste");
-    let SQL =
-     "INSERT INTO objetos ( name, cost, category ) VALUES ( 'Teste', '80', 'teste' )";
-
-    db.query(SQL, (err, result) =>{
+app.get('/', (req, res) =>{
+    let SQL = "INSERT INTO games ( name, cost, category) VALUES ( 'teste', '120', 'ação')"
+    db.query(SQL, (err, result)=>{
         console.log(err);
-        
+        console.log("Connected!");
     });
+
 });
-//tudo que entra no server é req e tudo que sai res
 
-//app.post
-//app.delete
-//app.put
 
-app.listen(3001, () =>{
+app.listen(3001, ()=>{
     console.log("rodando servidor");
 });
