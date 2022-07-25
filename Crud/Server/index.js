@@ -8,35 +8,44 @@ const db = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "password",
-    database: "crudgames",
+    database: "museu",
 })
 
 app.use(cors());
 app.use(express.json());
 
-app.post("/register", (req, res)=>{
+app.post("/Artista", (req, res)=>{
     const {name} = req.body;
-    const {cost} = req.body;
-    const {category} = req.body;
-
-    let SQL = "INSERT INTO games ( name, cost, category) VALUES (?,?,?)";
-    db.query(SQL,[name, cost, category], (err, result) =>{
+    const {dataNasc} = req.body;
+    const {dataMorte} = req.body;
+    const {paisOrigem} = req.body;
+    const {descricao} = req.body;
+    const {periodo} = req.body;
+    const {estilo} = req.body;
+    let SQL = "INSERT INTO Artista ( NOME_ARTISTA, dataNasc, dataMorte, PaisOrigem, Descricao, Periodo, EstiloPrincipal) VALUES (?,?,?,?,?,?,?)";
+    db.query(SQL,[name, dataNasc, dataMorte, paisOrigem, descricao, periodo, estilo], (err, result) =>{
         console.log(err);
         console.log("Dados registrados");
     })
 });
 
-app.get("/getCards", (req, res) =>{
-    let SQL = "SELECT * from games";
-
-    db.query(SQL, (err, result) =>{
-        if(err){
-            console.log(err);
-        }else{
-            res.send(result);
-        }
-    });
+app.post("/register", (req, res)=>{
+    const {artista} = req.body;
+    const {ano} = req.body;
+    const {periodo} = req.body;
+    const {titulo} = req.body;
+    const {pais} = req.body;
+    const {descricao} = req.body;
+    let SQL = "INSERT INTO objetos_arte ( ARTISTA, Ano, Periodo, Titulo, Pais, Descricao) VALUES (?,?,?,?,?,?)";
+    db.query(SQL,[artista, ano, periodo, titulo, pais, descricao], (err, result) =>{
+        console.log(err);
+        console.log("Dados registrados");
+    })
 });
+
+app.get("/getcard", (req, res) =>{
+    let SQL = "SELECT * from Objetos_arte"
+})
 
 app.listen(3001, ()=>{
     console.log("rodando servidor");
