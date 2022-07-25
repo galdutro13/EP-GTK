@@ -15,9 +15,12 @@ export default function Body(){
   
     const handleClickButton = () =>{
       Axios.post("http://localhost:3001/register", {
-      name: values.name,
-      cost: values.cost,
-      category: values.category,
+      artista: values.artista,
+      ano: values.ano,
+      periodo: values.periodo,
+      titulo: values.titulo,
+      pais: values.pais,
+      descricao: values.descricao,
       }).then((response)=>{
         console.log(response);
       });
@@ -25,14 +28,16 @@ export default function Body(){
 
     const [listGames, setListGames] = useState();
     console.log(listGames);
+    
     useEffect(() => {
-      Axios.get("http://localhost:3001/getCards").then((response) => {
+      Axios.get("http://localhost:3001/getCard").then((response) => {
         setListGames(response.data);
       });
     }, []);
 
     
     return(
+      
         <div className="app--container">
         <div className='register--container'>
         <h1 className='register--title'>
@@ -41,20 +46,36 @@ export default function Body(){
         <h4>
           Cadastro de objeto
         </h4>
-        <input type = "text" name = "name" placeholder = "Objeto" className="register--input" onChange={handleChangeValues}/>
-        <input type = "text" name = "cost" placeholder = "Tipo" className="register--input" onChange={handleChangeValues}/>
-        <input type = "text" name = "category" placeholder = "Categoria" className="register--input" onChange={handleChangeValues}/>
+        <label>Nome do Artista</label>
+        <input type = "text" name = "artista" placeholder = "Artista" className="register--input" onChange={handleChangeValues}/>
+        <label>Ano</label>
+        <input type = "date" name = "ano" placeholder = "Ano" className="register--input" onChange={handleChangeValues}/>
+        <label>Período</label>
+        <input type = "text" name = "periodo" placeholder = "Período" className="register--input" onChange={handleChangeValues}/>
+        <label>Titulo</label>
+        <input type = "text" name = "titulo" placeholder = "Titulo" className="register--input" onChange={handleChangeValues}/>
+        <label>Pais</label>
+        <input type = "text" name = "pais" placeholder = "País" className="register--input" onChange={handleChangeValues}/>
+        <label>Descrição</label>
+        <input type = "text" name = "descricao" placeholder = "Descrição" className="register--input" onChange={handleChangeValues}/>
+
         <button className='register--button' onClick={() => handleClickButton()}> Cadastrar Objeto</button>
       </div>
       {typeof listGames !== "undefined" && listGames.map((value) =>{
-        return <Card key={value.id}
+        return(
+        <Card key={value.id}
         listCard={listGames} 
-        setListGames={setListGames}>
-        id={value.id}
-        nome = {value.name}       
-        cost = {value.cost} 
-        category = {value.category}
+        setListGames={setListGames}
+        id={value.id}    
+        artista = {value.artista} 
+        ano = {value.ano}
+        periodo = {value.periodo}
+        titulo = {value.titulo}
+        pais = {value.pais}
+        descricao = {value.descricao}>
+    
         </Card>
+        )
       })};
       </div>
       

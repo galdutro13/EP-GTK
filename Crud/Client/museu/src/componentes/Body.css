@@ -2,7 +2,8 @@
 .app--container{
     display: flex;
     align-items: center;
-    flex-direction: column; 
+    flex-direction: column;
+    
   }
   
   .register--container{
@@ -11,7 +12,7 @@
     width: max-content;
     height: max-content;
     border-radius: 8px;
-    margin-top: 20px;
+    margin-top: 20px; 
   }
   
   .register--title{
@@ -24,10 +25,14 @@
     display: block;
     padding: 10px auto;
     margin: 10px auto;
+    background-color: #e3e3e3; 
   }
   
   .register--button{
+    padding-top: 5px;
     padding: 5px 10px;
+    background-color: #32CD32; 
+    border-radius: 10px;
   }
 
   
