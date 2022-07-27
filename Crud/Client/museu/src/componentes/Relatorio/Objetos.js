@@ -18,10 +18,11 @@ export default function Objetos(){
         return <CardObjeto
         listCard={listCard} 
         setListGames={setListCard}
+        emprestimo = {value.Data_Emprestimo}
+        colecao = {value.NOME_COLECAO}
         num_ID = {value.num_ID}
-        titulo = {value.Titulo}
-        tipo = {value.Tipo}
-        colecao = {value.ID_Colecao}
+        titulo = {value.titulo}
+        
         />
       })};
         </>
