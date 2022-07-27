@@ -4,8 +4,8 @@ import CardArtista from "./CardArtista";
 
 export default function Artista(props){
     const [values, setValues] = useState();
-    const [listGames, setListGames] = useState();
-    console.log(listGames);
+    const [listCard, setListCard] = useState();
+    console.log(listCard);
 
     const handleChangeValues = (value) =>{
       setValues(prevValue=>({
@@ -29,10 +29,10 @@ export default function Artista(props){
     };
 
     
-    console.log(listGames);
+    console.log(listCard);
     useEffect(() => {
       Axios.get("http://localhost:3001/getcardsArtista").then((response) => {
-        setListGames(response.data);
+        setListCard(response.data);
       });
     }, []);
     return(
@@ -63,11 +63,10 @@ export default function Artista(props){
         <button className='register--button' onClick={() => handleClickButton()}> Cadastrar Artista</button>
         
       </div>
-      <CardArtista/>
-      {typeof listGames !== "undefined" && listGames.map((value) =>{
+      {typeof listCard !== "undefined" && listCard.map((value) =>{
         return <CardArtista
-        listCard={listGames} 
-        setListGames={setListGames}
+        listCard={listCard} 
+        setListGames={setListCard}
         Descricao = {value.Descricao}
         EstiloPrincipal = {value.EstiloPrincipal}
         NOME_ARTISTA = {value.NOME_ARTISTA}
