@@ -6,6 +6,7 @@ import Navbar from "./componentes/Navbar";
 import Artista from "./componentes/Artista";
 import Objetos from "./componentes/Relatorio/Objetos";
 import Gastos from "./componentes/Relatorio/Gastos";
+import Quantidade from "./componentes/Relatorio/Quantidade";
 function App() {
   let component
   switch(window.location.pathname){
@@ -24,6 +25,9 @@ function App() {
           case "/Gastos":
             component = <Gastos/>
             break
+            case "/Quantidade":
+              component = <Quantidade/>
+              break
   }
   
   
