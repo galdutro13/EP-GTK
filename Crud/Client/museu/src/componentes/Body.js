@@ -1,11 +1,21 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './Body.css';
-import Axios, * as others from 'axios';
+import Axios from 'axios';
 import Card from "./Card";
 
 export default function Body(){
     const [values, setValues] = useState();
-    console.log(values);
+    const [listCard, setListCard] = useState();
+    console.log(listCard);
+
+    useEffect(() => {
+      Axios.get("http://localhost:3001/getcardsObjetos").then((response) => {
+        setListCard(response.data);
+        console.log(response);
+      });
+    }, []);
+
+
     const handleChangeValues = (value) =>{
       setValues(prevValue=>({
         ...prevValue, 
@@ -26,16 +36,6 @@ export default function Body(){
       });
     };
 
-    const [listGames, setListGames] = useState();
-    console.log(listGames);
-    
-    useEffect(() => {
-      Axios.get("http://localhost:3001/getCard").then((response) => {
-        setListGames(response.data);
-      });
-    }, []);
-
-    
     return(
       
         <div className="app--container">
@@ -61,23 +61,23 @@ export default function Body(){
 
         <button className='register--button' onClick={() => handleClickButton()}> Cadastrar Objeto</button>
       </div>
-      {typeof listGames !== "undefined" && listGames.map((value) =>{
-        return(
-        <Card key={value.id}
-        listCard={listGames} 
-        setListGames={setListGames}
-        id={value.id}    
-        artista = {value.artista} 
-        ano = {value.ano}
-        periodo = {value.periodo}
-        titulo = {value.titulo}
-        pais = {value.pais}
-        descricao = {value.descricao}>
-    
-        </Card>
-        )
-      })};
-      </div>
+
+      {typeof listCard !== "undefined" && listCard.map((val) => (
+        <Card
+          listCard={listCard}
+          setListCard={setListCard}
+          artista = {val.ARTISTA} 
+          ano = {val.Ano}
+          descricao = {val.Descricao}
+          pais = {val.Pais}
+          periodo = {val.Periodo}
+          titulo = {val.Titulo}
+          num_ID={val.num_ID}
+          
+        ></Card>
+      )
+      )}
       
-    )
+      </div>
+    );
 }
