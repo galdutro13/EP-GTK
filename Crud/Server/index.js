@@ -43,10 +43,29 @@ app.post("/register", (req, res)=>{
     })
 });
 
-app.get("/getcard", (req, res) =>{
-    let SQL = "SELECT * from Objetos_arte"
-})
 
+app.get("/getcardsObjetos", (req, res) =>{
+    let SQL = "SELECT * FROM objetos_arte";
+    db.query(SQL, (err, result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.send(result);
+            
+        }
+    });
+});
+
+app.get("/getcardsArtista", (req, res) =>{
+    let SQL = "SELECT * FROM Artista";
+    db.query(SQL, (err, result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.send(result);
+        }
+    });
+});
 app.listen(3001, ()=>{
     console.log("rodando servidor");
 });
