@@ -19,7 +19,7 @@ export default function Navbar(){
                 <ul>
                     <li><a href="/Objetos">Objeto</a></li>
                     <li><a href="/Gastos">Gastos</a></li>
-                    <li><a href="/Footer">Quantidades</a></li>
+                    <li><a href="/Quantidade">Quantidades</a></li>
                 </ul>
             </li>
         </ul>
