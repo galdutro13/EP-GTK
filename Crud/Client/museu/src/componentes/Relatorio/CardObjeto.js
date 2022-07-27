@@ -2,10 +2,21 @@ import React from "react"
 import "../card.css";
 export default function CardObjeto(props){
     let tipo;
-    if(props.Data_Emprestimo !== ""){
-        tipo = "Emprestimo";
+    let classe;
+    if(props.emprestado === 1){
+        classe = "Emprestado"
     }else{
-        tipo = "Permanente";
+        classe = "Permanente"
+    }
+
+    if(props.pintura === 1){
+        tipo = "Pintura"
+    }
+    if(props.outros === 1){
+        tipo = "Outros"
+    }
+    if(props.escultura === 1){
+        tipo = "Escultura"
     }
     return(
         <>
@@ -13,14 +24,14 @@ export default function CardObjeto(props){
                 <tr>
                     <th className="celula">ID do Objeto</th>
                     <th className="celula">Titulo da Obra</th>
-                    <th className="celula">Coleção da Obra</th>
-                    <th className="celula">Tipo de obra</th>
+                    <th className="celula">Tipo de Obra</th>
+                    <th className="celula">Categoria da obra</th>
                 </tr>
                 <tr>
                     <td className="celula">{props.num_ID}</td>
-                    <td className="celula">{props.titulo}</td>
-                    <td className="celula">{props.colecao}</td>
+                    <td className="celula">{props.Titulo}</td>
                     <td className="celula">{tipo}</td>
+                    <td className="celula">{classe}</td>
                 </tr>
             </table>
         </>

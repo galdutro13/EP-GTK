@@ -68,7 +68,9 @@ app.get("/getcardsArtista", (req, res) =>{
 });
 
 app.get("/getCATEGORIATIPO", (req, res)=>{
-    let SQL = "SELECT objetos_arte.num_ID, objetos_arte.titulo, colecao.NOME_COLECAO, emprestados.Data_Emprestimo from objetos_arte, colecao, emprestados, permanentes where (objetos_arte.num_ID = emprestados.ID_Emprestado and emprestados.ID_Colecao = colecao.NOME_COLECAO)  ";
+    let SQL = "SELECT *, CASE WHEN EXISTS (SELECT 1 FROM pintura p WHERE p.ID_pintura = objetos_arte.num_ID) THEN 1 ELSE 0 END AS isPintura,CASE WHEN EXISTS (SELECT 1 FROM escultura e WHERE e.ID_escultura = objetos_arte.num_ID) THEN 1 ELSE 0 END AS isEscultura, CASE WHEN EXISTS (SELECT 1 FROM outros o WHERE o.ID_outros = objetos_arte.num_ID) THEN 1 ELSE 0 END AS isOutro, CASE WHEN EXISTS(SELECT 1 FROM emprestados em WHERE em.ID_Emprestado = objetos_arte.num_ID) THEN 1 ELSE 0 END AS isEmprestado, CASE WHEN EXISTS(SELECT 1 FROM permanentes pe WHERE pe.ID_Permanente = objetos_arte.num_ID) THEN 1  ELSE 0 END AS isPermanente  FROM objetos_arte;";
+   
+    
     db.query(SQL, (err, result) =>{
         if(err){
             console.log(err);
@@ -80,3 +82,11 @@ app.get("/getCATEGORIATIPO", (req, res)=>{
 app.listen(3001, ()=>{
     console.log("rodando servidor");
 });
+
+		
+        
+	
+    
+	
+       
+	

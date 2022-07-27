@@ -11,7 +11,6 @@ export default function Navbar(){
                 <ul>
                     <li><a href="/Body">Objeto</a></li>
                     <li><a href="/Artista">Artista</a></li>
-                    <li><a href="/Footer">Coleção</a></li>
                 </ul>
             </li>
             <li>

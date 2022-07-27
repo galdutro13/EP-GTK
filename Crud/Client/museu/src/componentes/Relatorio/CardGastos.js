@@ -1,4 +1,5 @@
 import React from "react"
+import ReactEcharts from "echarts-for-react"; 
 
 export default function CardGastos(props){
     return(
