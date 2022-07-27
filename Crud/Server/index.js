@@ -66,6 +66,17 @@ app.get("/getcardsArtista", (req, res) =>{
         }
     });
 });
+
+app.get("/getCATEGORIATIPO", (req, res)=>{
+    let SQL = "SELECT objetos_arte.num_ID, objetos_arte.titulo, colecao.NOME_COLECAO, emprestados.Data_Emprestimo from objetos_arte, colecao, emprestados, permanentes where (objetos_arte.num_ID = emprestados.ID_Emprestado and emprestados.ID_Colecao = colecao.NOME_COLECAO)  ";
+    db.query(SQL, (err, result) =>{
+        if(err){
+            console.log(err);
+        }else{
+            res.send(result);
+        }
+    })
+})
 app.listen(3001, ()=>{
     console.log("rodando servidor");
 });
