@@ -2,9 +2,6 @@ import React from "react"
 import "./card.css"
 export default function Card(props){
     return(
-            
-            <div>
-                
             <table border="1">
                 <tr>
                     <td><b>Nome do Artista</b></td>
@@ -26,10 +23,6 @@ export default function Card(props){
                 </tr>
 
             </table>
-
-            </div>
-            
-        
         
     )
 }

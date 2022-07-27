@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function navbar(){
+export default function Navbar(){
     return(
         <navbar className="nav">
         <a href="/" className="siteTitle">
@@ -11,11 +11,16 @@ export default function navbar(){
                 <ul>
                     <li><a href="/Body">Objeto</a></li>
                     <li><a href="/Artista">Artista</a></li>
-                    <li><a href="#">Coleção</a></li>
+                    <li><a href="/Footer">Coleção</a></li>
                 </ul>
             </li>
             <li>
                 <a href="/Relatórios">Relatórios</a>
+                <ul>
+                    <li><a href="/Objetos">Objeto</a></li>
+                    <li><a href="/Gastos">Gastos</a></li>
+                    <li><a href="/Footer">Quantidades</a></li>
+                </ul>
             </li>
         </ul>
     </navbar>
