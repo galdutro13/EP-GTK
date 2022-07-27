@@ -1,6 +1,7 @@
 import React from "react"
 import "./card.css"
 export default function Card(props){
+    
     return(
             <table border="1" cellpadding="5px" cellspacing="0" id="tabela">
                 <tr>
