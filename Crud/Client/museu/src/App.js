@@ -1,10 +1,8 @@
-import React, {useState, useEffect } from "react"
+import React from "react"
 //import './App.css';
-import Header from "./componentes/Header";
 import Body from "./componentes/Body"; 
 import Footer from "./componentes/Footer";
-import Card from "./componentes/Card";
-import Navbar from "./componentes/navbar";
+import Navbar from "./componentes/Navbar";
 import Artista from "./componentes/Artista";
 
 function App() {
@@ -20,15 +18,15 @@ function App() {
           component = <Artista/>
           break
         case "/Relatorios":
-          component = <Header/>
+          component = <Navbar/>
           break
   }
+  
   
   return(
     <>
       <Navbar/>
       {component}
-      <Header/>
       <Footer />
     </>
     
