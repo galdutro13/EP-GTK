@@ -1,10 +1,12 @@
 import React, {useState, useEffect } from "react"
-import Axios, * as others from 'axios';
-import Card from "./Card";
+import Axios from 'axios';
+import CardArtista from "./CardArtista";
 
-export default function Artista(){
+export default function Artista(props){
     const [values, setValues] = useState();
-    console.log(values);
+    const [listGames, setListGames] = useState();
+    console.log(listGames);
+
     const handleChangeValues = (value) =>{
       setValues(prevValue=>({
         ...prevValue, 
@@ -26,10 +28,10 @@ export default function Artista(){
       });
     };
 
-    const [listGames, setListGames] = useState();
+    
     console.log(listGames);
     useEffect(() => {
-      Axios.get("http://localhost:3001/getCards").then((response) => {
+      Axios.get("http://localhost:3001/getcardsArtista").then((response) => {
         setListGames(response.data);
       });
     }, []);
@@ -61,23 +63,21 @@ export default function Artista(){
         <button className='register--button' onClick={() => handleClickButton()}> Cadastrar Artista</button>
         
       </div>
-      <Card/>
+      <CardArtista/>
       {typeof listGames !== "undefined" && listGames.map((value) =>{
-        return <Card key={value.id}
+        return <CardArtista
         listCard={listGames} 
-        setListGames={setListGames}>
-        id={value.id}    
-        name = {value.name} 
+        setListGames={setListGames}
+        Descricao = {value.Descricao}
+        EstiloPrincipal = {value.EstiloPrincipal}
+        NOME_ARTISTA = {value.NOME_ARTISTA}
+        PaisOrigem = {value.PaisOrigem} 
+        Periodo = {value.Periodo}
         dataNasc = {value.dataNasc}
         dataMorte = {value.dataMorte}
-        paisOrigem = {value.paisOrigem}
-        descricao = {value.descricao}
-        periodo = {value.periodo}
-        estilo = {value.estilo}
-        </Card>
+        />
       })};
-      </div>
-      
+      </div> 
         </>
     )
 }
